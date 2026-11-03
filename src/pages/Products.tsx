@@ -8,6 +8,7 @@ import { CartState } from '../types';
 
 const focus: Record<number, string> = { 1: 'object-right' };
 const display = "font-['Bricolage_Grotesque',sans-serif]";
+const brand = "bg-[#123524] text-white hover:bg-[#1c4a33]";
 const ALL = 'Semua';
 
 export const Products = ({
@@ -29,16 +30,16 @@ export const Products = ({
         </div>
         <div className="flex flex-wrap gap-2" role="group" aria-label="Filter kategori">
           {categories.map((c) => (
-            <button
+            <Button
               key={c}
+              size="sm"
+              variant={active === c ? 'brand' : 'outline'}
               onClick={() => setActive(c)}
               aria-pressed={active === c}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#123524] ${
-                active === c ? 'bg-[#123524] text-white' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200'
-              }`}
+              className={`rounded-full ${active === c ? brand : ''}`}
             >
               {c}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
@@ -68,12 +69,9 @@ export const Products = ({
                   {qty > 0 ? (
                     <QuantityControl qty={qty} onIncrement={() => onAddToCart(product.id)} onDecrement={() => onRemoveFromCart(product.id)} className="w-full" />
                   ) : (
-                    <button
-                      onClick={() => onAddToCart(product.id)}
-                      className="inline-flex h-10 w-full items-center justify-center gap-1.5 rounded-lg bg-[#123524] text-sm font-semibold text-white transition-colors hover:bg-[#1c4a33] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#123524]"
-                    >
+                    <Button variant="brand" className={`w-full ${brand}`} onClick={() => onAddToCart(product.id)}>
                       <Plus className="h-3.5 w-3.5" /> Tambah
-                    </button>
+                    </Button>
                   )}
                 </div>
               </div>

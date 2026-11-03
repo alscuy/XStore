@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { products } from '../data/products';
+import { Button } from '../components/ui/button';
 
 const focus: Record<number, string> = { 1: 'object-right' };
+
 const display = "font-['Bricolage_Grotesque',sans-serif]";
+const brand = "bg-[#123524] text-white hover:bg-[#1c4a33]";
 
 export const Home = () => {
   const picks = products.slice(0, 4);
@@ -17,11 +20,10 @@ export const Home = () => {
         <p className="mt-6 max-w-md text-lg leading-relaxed text-zinc-600">
           XStore menyajikan koleksi 2026. Pilih yang kamu suka, masukkan ke keranjang, selesai.
         </p>
-        <Link
-          to="/products"
-          className="mt-8 inline-flex items-center gap-2 rounded-lg bg-[#123524] px-6 py-3.5 font-semibold text-white transition-colors hover:bg-[#1c4a33] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#123524]"
-        >
-          Lihat semua produk <ArrowRight className="h-4 w-4" />
+        <Link to="/products" className="mt-8 inline-block">
+          <Button variant="brand" size="lg" className={`${brand} px-6`}>
+            Lihat semua produk <ArrowRight className="h-4 w-4" />
+          </Button>
         </Link>
       </div>
 

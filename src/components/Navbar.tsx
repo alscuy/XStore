@@ -32,7 +32,7 @@ export const Navbar = ({ totalCartCount }: { totalCartCount: number }) => {
                 {item.icon}
                 <span>{item.label}</span>
                 {item.badge !== undefined && item.badge > 0 && (
-                  <span className="bg-emerald-600 text-white text-[11px] font-bold px-1.5 py-0.2 rounded-full min-w-[20px] text-center shadow-xs">
+                 <span className="bg-emerald-600 text-white text-[11px] font-bold leading-none h-5 min-w-5 px-1.5 inline-flex items-center justify-center rounded-full shadow-xs">
                     {item.badge}
                   </span>
                 )}

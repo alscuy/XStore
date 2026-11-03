@@ -7,6 +7,8 @@ import { QuantityControl } from '../components/QuantityControl';
 import { CartState } from '../types';
 
 const display = "font-['Bricolage_Grotesque',sans-serif]";
+const brand = "bg-[#123524] text-white hover:bg-[#1c4a33]";
+const accent = "bg-[#F2B632] text-[#123524] hover:bg-[#f6c555]";
 
 export const Cart = ({
   cart, onAddToCart, onRemoveFromCart, onClearItem, onCheckout
@@ -24,11 +26,8 @@ export const Cart = ({
         <ShoppingBag className="mx-auto h-10 w-10 text-zinc-300" />
         <h1 className={`${display} mt-5 text-3xl font-extrabold text-[#123524]`}>Keranjang kosong</h1>
         <p className="mx-auto mt-2 max-w-sm text-sm text-zinc-500">Tambahkan produk dari katalog, lalu kembali ke sini untuk checkout.</p>
-        <Link
-          to="/products"
-          className="mt-6 inline-flex items-center rounded-lg bg-[#123524] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#1c4a33]"
-        >
-          Lihat produk
+        <Link to="/products" className="mt-6 inline-block">
+          <Button variant="emerald" size="lg" className={brand}>Lihat produk</Button>
         </Link>
       </div>
     );
@@ -70,12 +69,9 @@ export const Cart = ({
             <p className="text-sm text-white/75">Total pembayaran</p>
             <p className={`${display} mt-1 text-3xl font-extrabold`}>Rp {totalPrice.toLocaleString('id-ID')}</p>
           </div>
-          <button
-            onClick={() => { onCheckout(); navigate('/'); }}
-            className="mt-6 h-12 w-full rounded-lg bg-[#F2B632] font-bold text-[#123524] transition-colors hover:bg-[#f6c555] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
+          <Button variant="brand" size="lg" className={`mt-6 w-full font-bold ${accent}`} onClick={() => { onCheckout(); navigate('/'); }}>
             Bayar sekarang
-          </button>
+          </Button>
         </aside>
       </div>
     </div>

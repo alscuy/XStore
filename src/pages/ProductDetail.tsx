@@ -7,8 +7,8 @@ import { QuantityControl } from '../components/QuantityControl';
 import { CartState } from '../types';
 
 const focus: Record<number, string> = { 1: 'object-right' };
-
 const display = "font-['Bricolage_Grotesque',sans-serif]";
+const brand = "bg-[#123524] text-white hover:bg-[#1c4a33]";
 
 export const ProductDetail = ({
   cart, onAddToCart, onRemoveFromCart
@@ -55,15 +55,12 @@ export const ProductDetail = ({
             {qty > 0 ? (
               <div className="flex items-center gap-4">
                 <QuantityControl qty={qty} onIncrement={() => onAddToCart(product.id)} onDecrement={() => onRemoveFromCart(product.id)} size="lg" className="flex-1" />
-                <Link to="/cart" className="font-semibold text-[#123524] underline underline-offset-4">Buka keranjang</Link>
+                <Link to="/cart"><Button variant="outline" size="lg">Buka keranjang</Button></Link>
               </div>
             ) : (
-              <button
-                onClick={() => onAddToCart(product.id)}
-                className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#123524] font-semibold text-white transition-colors hover:bg-[#1c4a33] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#123524]"
-              >
+              <Button variant="brand" size="lg" className={`w-full ${brand}`} onClick={() => onAddToCart(product.id)}>
                 <Plus className="h-4 w-4" /> Tambah ke keranjang
-              </button>
+              </Button>
             )}
           </div>
         </div>

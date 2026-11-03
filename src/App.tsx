@@ -2,8 +2,6 @@ import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { products } from "./data/products";
 import { CartState } from "./types/index";
-
-// Import Components & Pages
 import { Navbar } from "./components/Navbar";
 import { Toast } from "./components/ui/toast";
 import { Home } from "./pages/Home";

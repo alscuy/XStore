@@ -16,6 +16,13 @@
     --color-zinc-600: #52525b;
     --color-zinc-800: #27272a;
     --color-zinc-900: #18181b;
+    @theme {
+  --color-brand: #123524;
+  --color-brand-hover: #1c4a33;
+  --color-accent: #F2B632;
+  --color-accent-hover: #f6c555;
+  --font-display: "Bricolage Grotesque", sans-serif;
+}
 }
 
 @layer base {
