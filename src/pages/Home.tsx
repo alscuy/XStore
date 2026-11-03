@@ -18,7 +18,7 @@ export const Home = () => {
           Produk pilihan, harga yang jelas.
         </h1>
         <p className="mt-6 max-w-md text-lg leading-relaxed text-zinc-600">
-          XStore menyajikan koleksi 2026. Pilih yang kamu suka, masukkan ke keranjang, selesai.
+          Temukan berbagai produk menarik dengan harga terbaik hanya di XStore
         </p>
         <Link to="/products" className="mt-8 inline-block">
           <Button variant="brand" size="lg" className={`${brand} px-6`}>
