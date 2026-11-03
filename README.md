@@ -18,7 +18,7 @@ Project ini dibuat untuk challenge **Materi 2: Routing React**.
 - [Vite](https://vite.dev)
 - [React Router](https://reactrouter.com) untuk routing
 - [Tailwind CSS](https://tailwindcss.com) untuk styling
-- [ShadCN UI](https://ui.shadcn.com) untuk komponen `Button`
+- [ShadCN UI](https://ui.shadcn.com) untuk ui
 - [Lucide React](https://lucide.dev) untuk ikon
 
 ## Cara Menjalankan
@@ -35,13 +35,6 @@ npm run dev
 
 Buka `http://localhost:5173` di browser.
 
-Perintah lain:
-
-```bash
-npm run build     # build untuk produksi
-npm run preview   # lihat hasil build secara lokal
-```
-
 ## Daftar Route
 
 | Path | Halaman |
@@ -57,20 +50,21 @@ npm run preview   # lihat hasil build secara lokal
 src/
 ├── components/
 │   ├── ui/
-│   │   └── button.tsx        # ShadCN Button
+│   │   └── button.tsx        
+│   │   └── toast.tsx        
 │   ├── Navbar.tsx
 │   └── QuantityControl.tsx
 ├── data/
-│   └── products.ts           # data produk
+│   └── products.ts         
 ├── pages/
 │   ├── Home.tsx
 │   ├── Products.tsx
 │   ├── ProductDetail.tsx
 │   └── Cart.tsx
-├── types.ts                  # tipe CartState
-├── App.tsx                   # daftar route dan state keranjang
+├── types.ts                  
+├── App.tsx                 
 ├── main.tsx
-└── index.css                 # Tailwind dan theme
+└── index.css                 
 ```
 
 ## Font
@@ -80,19 +74,3 @@ Judul memakai [Bricolage Grotesque](https://fonts.google.com/specimen/Bricolage+
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&display=swap");
 ```
-
-## Checklist Challenge
-
-- [x] Project baru dengan React
-- [x] Halaman Home, Products, dan Cart
-- [x] React Router untuk navigasi antarhalaman
-- [x] Dynamic route untuk Product Detail berdasarkan ID
-- [x] Detail produk: nama, harga, gambar, deskripsi
-- [x] Tailwind CSS untuk header, navigasi, dan card produk
-- [x] ShadCN UI Button untuk tombol interaksi
-- [x] Navigasi Home, Products, dan Cart
-
-## Catatan Pengembangan
-
-- State keranjang disimpan di `App.tsx` dalam bentuk objek `{ [idProduk]: jumlah }` dan diteruskan ke halaman lewat props.
-- Data keranjang tidak disimpan permanen, jadi akan kosong lagi setelah halaman di-refresh.

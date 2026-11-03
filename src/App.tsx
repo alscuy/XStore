@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { products } from "./data/products";
 import { CartState } from "./types/index";
@@ -9,9 +9,37 @@ import { Products } from "./pages/Products";
 import { ProductDetail } from "./pages/ProductDetail";
 import { Cart } from "./pages/Cart";
 
+const CART_KEY = "xstore-cart";
+
+// Baca keranjang dari localStorage; abaikan data yang rusak atau tidak valid
+const loadCart = (): CartState => {
+  try {
+    const saved = localStorage.getItem(CART_KEY);
+    if (!saved) return {};
+    const parsed = JSON.parse(saved) as Record<string, unknown>;
+    const clean: CartState = {};
+    for (const [id, qty] of Object.entries(parsed)) {
+      if (typeof qty === "number" && qty > 0 && products.some((p) => p.id === Number(id))) {
+        clean[Number(id)] = qty;
+      }
+    }
+    return clean;
+  } catch {
+    return {};
+  }
+};
+
 export default function App() {
-  const [cart, setCart] = useState<CartState>({});
+  const [cart, setCart] = useState<CartState>(loadCart);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    } catch {
+      // abaikan jika penyimpanan penuh atau diblokir
+    }
+  }, [cart]);
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -56,7 +84,7 @@ export default function App() {
       <div className="min-h-screen bg-zinc-50/50 text-zinc-900 flex flex-col font-sans antialiased">
         <Toast message={toastMessage} />
         <Navbar totalCartCount={totalCartCount} />
-        
+
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
